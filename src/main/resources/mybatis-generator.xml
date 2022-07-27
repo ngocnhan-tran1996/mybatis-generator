@@ -1,0 +1,47 @@
+<!DOCTYPE generatorConfiguration PUBLIC
+  "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+  "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+  <context id="postgreSQL" targetRuntime="MyBatis3Simple">
+
+    <plugin type="com.mybatis.generator.plugin.LombokPlugin">
+
+      <!-- enable annotations -->
+      <property name="builder" value="true"/>
+      <!-- annotation's option(boolean) -->
+      <property name="builder.fluent" value="true"/>
+      <!-- annotation's option(String) -->
+      <property name="builder.builderMethodName" value="myBuilder"/>
+
+      <property name="accessors" value="true"/>
+      <!-- annotation's option(array of String) -->
+      <property name="accessors.prefix" value="m_, _"/>
+
+      <!-- disable annotations -->
+      <property name="allArgsConstructor" value="false"/>
+    </plugin>
+
+    <commentGenerator>
+      <property name="suppressAllComments" value="true"/>
+    </commentGenerator>
+
+    <jdbcConnection driverClass="org.postgresql.Driver"
+      connectionURL="jdbc:postgresql://localhost:5432/demo" userId="postgres" password="ngocnhan"/>
+
+    <javaTypeResolver>
+      <property name="useJSR310Types" value="true"/>
+    </javaTypeResolver>
+
+    <javaModelGenerator targetPackage="com.mybatis.generator.model" targetProject="src/main/java"/>
+
+    <sqlMapGenerator targetPackage="com.mybatis.generator.mapper"
+      targetProject="src/main/resources"/>
+
+    <javaClientGenerator type="XMLMAPPER" targetPackage="com.mybatis.generator.mapper"
+      targetProject="src/main/java"/>
+
+    <table tableName="book"/>
+    <table tableName="book_response_entity"/>
+  </context>
+</generatorConfiguration>
