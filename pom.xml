@@ -9,68 +9,50 @@
   <version>0.0.1</version>
   <name>Mybatis Generator</name>
   <description>Mybatis Generator</description>
+  <packaging>pom</packaging>
 
-  <properties>
-    <java.version>11</java.version>
-  </properties>
-
-  <dependencies>
-    <dependency>
-      <groupId>com.mybatis.generator</groupId>
-      <artifactId>plugin</artifactId>
-      <version>0.0.1</version>
-    </dependency>
-  </dependencies>
+  <modules>
+    <module>mybatis-generator-plugin</module>
+  </modules>
 
   <build>
-    <pluginManagement>
-      <plugins>
-        <plugin>
-          <groupId>org.mybatis.generator</groupId>
-          <artifactId>mybatis-generator-maven-plugin</artifactId>
-          <version>1.4.1</version>
-          <configuration>
-            <configurationFile>src/main/resources/mybatis-generator.xml</configurationFile>
-            <overwrite>true</overwrite>
-          </configuration>
-          <executions>
-            <execution>
-              <id>Generate MyBatis Artifacts</id>
-              <goals>
-                <goal>generate</goal>
-              </goals>
-            </execution>
-          </executions>
-          <dependencies>
-            <dependency>
-              <groupId>com.oracle.database.jdbc</groupId>
-              <artifactId>ojdbc8</artifactId>
-              <version>21.6.0.0.1</version>
-            </dependency>
+    <plugins>
+      <plugin>
+        <groupId>org.mybatis.generator</groupId>
+        <artifactId>mybatis-generator-maven-plugin</artifactId>
+        <version>1.4.1</version>
+        <configuration>
+          <configurationFile>src/main/resources/mybatis-generator.xml</configurationFile>
+          <overwrite>true</overwrite>
+        </configuration>
+        <executions>
+          <execution>
+            <id>Generate MyBatis Artifacts</id>
+            <goals>
+              <goal>generate</goal>
+            </goals>
+          </execution>
+        </executions>
+        <dependencies>
+          <dependency>
+            <groupId>com.oracle.database.jdbc</groupId>
+            <artifactId>ojdbc8</artifactId>
+            <version>21.6.0.0.1</version>
+          </dependency>
 
-            <dependency>
-              <groupId>org.postgresql</groupId>
-              <artifactId>postgresql</artifactId>
-              <version>42.4.0</version>
-            </dependency>
+          <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>42.4.0</version>
+          </dependency>
 
-            <dependency>
-              <groupId>com.mybatis.generator</groupId>
-              <artifactId>plugin</artifactId>
-              <version>0.0.1</version>
-            </dependency>
-          </dependencies>
-        </plugin>
-
-        <plugin>
-          <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-compiler-plugin</artifactId>
-          <configuration>
-            <source>11</source>
-            <target>11</target>
-          </configuration>
-        </plugin>
-      </plugins>
-    </pluginManagement>
+          <dependency>
+            <groupId>com.mybatis.generator</groupId>
+            <artifactId>plugin</artifactId>
+            <version>0.0.1</version>
+          </dependency>
+        </dependencies>
+      </plugin>
+    </plugins>
   </build>
 </project>
