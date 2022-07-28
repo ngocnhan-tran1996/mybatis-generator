@@ -15,6 +15,10 @@
     <module>mybatis-generator-plugin</module>
   </modules>
 
+  <properties>
+    <java.version>11</java.version>
+  </properties>
+
   <build>
     <plugins>
       <plugin>
