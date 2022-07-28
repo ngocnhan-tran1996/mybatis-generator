@@ -33,7 +33,6 @@ public class LombokPlugin extends PluginAdapter {
     return true;
   }
 
-
   @Override
   public boolean modelGetterMethodGenerated(
       Method method,

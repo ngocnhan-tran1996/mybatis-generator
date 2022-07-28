@@ -2,16 +2,18 @@ package com.mybatis.generator.constant;
 
 public final class Strings {
 
-  public static final String DOT = ".";
-
   public static String addColumnAnnotation(String columnName) {
 
     return addAnnotation("Column", columnName);
   }
 
-  public static String addTableAnnotation(String columnName) {
+  public static String addTableAnnotation(String tableName, String schema) {
 
-    return addAnnotation("Table", columnName);
+    String table = schema == null || schema.isBlank()
+        ? tableName
+        : String.format("%s, schema = \"%s", tableName, schema);
+
+    return addAnnotation("Table", table);
   }
 
   private static String addAnnotation(String annotationName, String name) {

@@ -46,12 +46,13 @@ public class PersistencePlugin extends PluginAdapter {
       ModelClassType modelClassType) {
 
     /* Table Annotation */
+    String schema = introspectedTable.getTableConfiguration().getSchema();
     String tableName = introspectedTable.getTableConfiguration().getTableName();
     String camelCaseTableName = JavaBeansUtil.getCamelCaseString(tableName, false);
     String actualTableName = introspectedTable.getTableConfiguration().getDomainObjectName();
     shouldAddTableAnnotation = actualTableName != null
         && Strings.notEqualsIgnoreCase(camelCaseTableName, actualTableName);
-    tableAnnotationName = Strings.addTableAnnotation(tableName);
+    tableAnnotationName = Strings.addTableAnnotation(tableName, schema);
 
     /* Column Annotation */
     String actualColumnName = introspectedColumn.getActualColumnName();

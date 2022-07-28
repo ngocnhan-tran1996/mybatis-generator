@@ -62,6 +62,12 @@ public enum LombokAnnotation {
     return getByPropertyName(propertyName) != null;
   }
 
+  /**
+   * Return {@link com.mybatis.generator.plugin.LombokPlugin} by the name attribute in tag property
+   *
+   * @param propertyName the name attribute in tag property
+   * @return null if {@code propertyName} do not exist in {@link LombokAnnotation#values()}
+   */
   public static LombokAnnotation getByPropertyName(String propertyName) {
 
     return Arrays.stream(LombokAnnotation.values())
