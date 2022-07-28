@@ -38,7 +38,9 @@
       <property name="useJSR310Types" value="true"/>
     </javaTypeResolver>
 
-    <javaModelGenerator targetPackage="com.mybatis.generator.model" targetProject="src/main/java"/>
+    <javaModelGenerator
+      targetPackage="com.mybatis.generator.model"
+      targetProject="src/main/java"/>
 
     <table tableName="book" domainObjectName="Book3"/>
     <table tableName="book_response_entity">
