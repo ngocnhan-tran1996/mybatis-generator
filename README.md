@@ -4,58 +4,62 @@
 
 1. Download this source
 2. Config database information in file `database.properties`
-  ```
-  database.url=jdbc:{postgresql|oracle:thin}://localhost:port/database
-  database.username=username
-  database.password=password
-  ```
+
+   ```
+    database.url=jdbc:{postgresql|oracle:thin}://localhost:port/database
+    database.username=username
+    database.password=password
+   ```
+  
 3. Choose one of below codes and copy to `mybatis-generator.xml`
-  ```xml
-  <!-- For PostgreSQL -->
-  <jdbcConnection driverClass="${database.postgresql-driver-class}"
-      connectionURL="${database.url}"
-      userId="${database.username}"
-      password="${database.password}" />
 
-  <!-- For Oracle -->
-  <jdbcConnection driverClass="${database.oracle-driver-class}"
-      connectionURL="${database.url}"
-      userId="${database.username}"
-      password="${database.password}" />
-  ```
+   ```xml
+    <!-- For PostgreSQL -->
+    <jdbcConnection driverClass="${database.postgresql-driver-class}"
+        connectionURL="${database.url}"
+        userId="${database.username}"
+        password="${database.password}" />
+
+    <!-- For Oracle -->
+    <jdbcConnection driverClass="${database.oracle-driver-class}"
+        connectionURL="${database.url}"
+        userId="${database.username}"
+        password="${database.password}" />
+   ```
+   
 4. Generate tables
-  ```xml
-    <!-- This will generate MyTable.java (1) -->
-    <table tableName="my_table" schema="ifHave" />
+    ```xml
+      <!-- This will generate MyTable.java (1) -->
+      <table tableName="my_table" schema="ifHave" />
 
-    <!-- This will generate Table.java (2) -->
-    <table tableName="my_table" domainObjectName="table" />
+      <!-- This will generate Table.java (2) -->
+      <table tableName="my_table" domainObjectName="table" />
 
-    <!-- This will generate MyTable.java (3) -->
-    <table tableName="my_table">
-      <columnOverride column="my_column" property="column"/>
-    </table>
-  ```
-  ```java
-    // This will generate MyTable.java (1)
-    class MyTable {
-      private String myColumn;
-    }
+      <!-- This will generate MyTable.java (3) -->
+      <table tableName="my_table">
+        <columnOverride column="my_column" property="column"/>
+      </table>
+    ```
+    ```java
+      // This will generate MyTable.java (1)
+      class MyTable {
+        private String myColumn;
+      }
 
-    // This will generate MyTable.java (2)
-    class Table {
-      private String myColumn;
-    }
+      // This will generate MyTable.java (2)
+      class Table {
+        private String myColumn;
+      }
 
-    // This will generate MyTable.java (3)
-    class MyTable {
-      private String column;
-    }
-  ```
+      // This will generate MyTable.java (3)
+      class MyTable {
+        private String column;
+      }
+    ```
 5. Run command line
-  ```
-    mybatis-generator> mvn mybatis-generator:generate
-  ```
+    ```
+      mybatis-generator> mvn mybatis-generator:generate
+    ```
 ### II. Advance Guide
 
   ```xml
@@ -81,7 +85,7 @@
   <javaTypeResolver>
     <property name="useJSR310Types" value="true"/>
   </javaTypeResolver>
-  
+
   <!-- Auto generate @Mapper, maybe you don't need it -->
   <sqlMapGenerator
     targetPackage="com.mybatis.generator.mapper"
