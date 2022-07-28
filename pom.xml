@@ -16,13 +16,6 @@
 
   <dependencies>
     <dependency>
-      <groupId>org.projectlombok</groupId>
-      <artifactId>lombok</artifactId>
-      <version>1.18.24</version>
-      <scope>provided</scope>
-    </dependency>
-
-    <dependency>
       <groupId>com.mybatis.generator</groupId>
       <artifactId>plugin</artifactId>
       <version>0.0.1</version>
@@ -77,9 +70,7 @@
             <target>11</target>
           </configuration>
         </plugin>
-
       </plugins>
     </pluginManagement>
   </build>
-
 </project>

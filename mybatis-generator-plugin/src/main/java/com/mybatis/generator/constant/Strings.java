@@ -11,7 +11,7 @@ public final class Strings {
 
     String table = schema == null || schema.isBlank()
         ? tableName
-        : String.format("%s, schema = \"%s", tableName, schema);
+        : String.format("%s\", schema = \"%s", tableName, schema);
 
     return addAnnotation("Table", table);
   }
