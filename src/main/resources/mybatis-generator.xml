@@ -3,31 +3,37 @@
   "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
 
 <generatorConfiguration>
+  <properties resource="database.properties"/>
+
   <context id="postgreSQL" targetRuntime="MyBatis3Simple">
+
+    <property name="javaFileEncoding" value="UTF-8"/>
+
+    <plugin type="com.mybatis.generator.plugin.PersistencePlugin"/>
 
     <plugin type="com.mybatis.generator.plugin.LombokPlugin">
 
-      <!-- enable annotations -->
-      <property name="builder" value="true"/>
-      <!-- annotation's option(boolean) -->
-      <property name="builder.fluent" value="true"/>
-      <!-- annotation's option(String) -->
-      <property name="builder.builderMethodName" value="myBuilder"/>
-
-      <property name="accessors" value="true"/>
-      <!-- annotation's option(array of String) -->
-      <property name="accessors.prefix" value="m_, _"/>
-
       <!-- disable annotations -->
-      <property name="allArgsConstructor" value="false"/>
+      <property name="getter" value="false"/>
+      <property name="getter" value="false"/>
+
+      <!-- enable annotations -->
+      <property name="data" value="true"/>
+      <property name="builder" value="true"/>
+      <property name="toString" value="false"/>
+      <property name="noArgsConstructor" value="true"/>
+      <property name="allArgsConstructor" value="true"/>
     </plugin>
 
     <commentGenerator>
       <property name="suppressAllComments" value="true"/>
     </commentGenerator>
 
-    <jdbcConnection driverClass="org.postgresql.Driver"
-      connectionURL="jdbc:postgresql://localhost:5432/demo" userId="postgres" password="ngocnhan"/>
+    <jdbcConnection driverClass="${database.postgresql-driver-class}"
+      connectionURL="${database.url}"
+      userId="${database.username}"
+      password="${database.password}">
+    </jdbcConnection>
 
     <javaTypeResolver>
       <property name="useJSR310Types" value="true"/>
@@ -35,13 +41,15 @@
 
     <javaModelGenerator targetPackage="com.mybatis.generator.model" targetProject="src/main/java"/>
 
-    <sqlMapGenerator targetPackage="com.mybatis.generator.mapper"
-      targetProject="src/main/resources"/>
+    <!-- <sqlMapGenerator targetPackage="com.mybatis.generator.mapper"
+      targetProject="src/main/resources"/>  -->
 
-    <javaClientGenerator type="XMLMAPPER" targetPackage="com.mybatis.generator.mapper"
-      targetProject="src/main/java"/>
+    <!-- <javaClientGenerator type="XMLMAPPER" targetPackage="com.mybatis.generator.mapper"
+    targetProject="src/main/java"/> -->
 
-    <table tableName="book"/>
-    <table tableName="book_response_entity"/>
+    <table tableName="book" domainObjectName="Book3"/>
+    <table tableName="book_response_entity">
+      <columnOverride column="publish_Date" property="test"/>
+    </table>
   </context>
 </generatorConfiguration>
