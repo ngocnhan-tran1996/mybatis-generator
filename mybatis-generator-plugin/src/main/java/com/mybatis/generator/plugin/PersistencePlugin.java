@@ -25,6 +25,9 @@ public class PersistencePlugin extends PluginAdapter {
       TopLevelClass topLevelClass,
       IntrospectedTable introspectedTable) {
 
+    topLevelClass.addImportedType("javax.persistence.Entity");
+    topLevelClass.addAnnotation("@Entity");
+
     if (shouldAddTableAnnotation) {
       topLevelClass.addImportedType("javax.persistence.Table");
       topLevelClass.addAnnotation(tableAnnotationName);
